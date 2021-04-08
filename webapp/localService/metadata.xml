@@ -1,0 +1,147 @@
+<edmx:Edmx Version="1.0" xmlns:edmx="http://schemas.microsoft.com/ado/2007/06/edmx" xmlns:m="http://schemas.microsoft.com/ado/2007/08/dataservices/metadata" xmlns:sap="http://www.sap.com/Protocols/SAPData">
+    <edmx:DataServices m:DataServiceVersion="2.0">
+        <Schema Namespace="86be556b371ec29c15306364" xml:lang="en" sap:schema-version="0000" xmlns="http://schemas.microsoft.com/ado/2008/09/edm">
+            <EntityContainer Name="86be556b371ec29c15306364_Entities" m:IsDefaultEntityContainer="true">
+                <EntitySet Name="UserSet" EntityType="86be556b371ec29c15306364.User" sap:creatable="true" sap:updatable="true" sap:deletable="true"/>
+                <AssociationSet Name="UserPrzetargPrzetarg" Association="86be556b371ec29c15306364.UserPrzetargPrzetarg" sap:creatable="true" sap:updatable="true" sap:deletable="true">
+                    <End EntitySet="UserSet" Role="FromRole_UserPrzetargPrzetarg"/>
+                    <End EntitySet="PrzetargSet" Role="ToRole_UserPrzetargPrzetarg"/>
+                </AssociationSet>
+                <AssociationSet Name="UserZadanieZadania" Association="86be556b371ec29c15306364.UserZadanieZadania" sap:creatable="true" sap:updatable="true" sap:deletable="true">
+                    <End EntitySet="UserSet" Role="FromRole_UserZadanieZadania"/>
+                    <End EntitySet="ZadaniaSet" Role="ToRole_UserZadanieZadania"/>
+                </AssociationSet>
+                <AssociationSet Name="Usertesttest" Association="86be556b371ec29c15306364.Usertesttest" sap:creatable="true" sap:updatable="true" sap:deletable="true">
+                    <End EntitySet="UserSet" Role="FromRole_Usertesttest"/>
+                    <End EntitySet="testSet" Role="ToRole_Usertesttest"/>
+                </AssociationSet>
+                <EntitySet Name="PrzetargSet" EntityType="86be556b371ec29c15306364.Przetarg" sap:creatable="true" sap:updatable="true" sap:deletable="true"/>
+                <EntitySet Name="ZadaniaSet" EntityType="86be556b371ec29c15306364.Zadania" sap:creatable="true" sap:updatable="true" sap:deletable="true"/>
+                <AssociationSet Name="ZadaniaUserUser" Association="86be556b371ec29c15306364.ZadaniaUserUser" sap:creatable="true" sap:updatable="true" sap:deletable="true">
+                    <End EntitySet="ZadaniaSet" Role="FromRole_ZadaniaUserUser"/>
+                    <End EntitySet="UserSet" Role="ToRole_ZadaniaUserUser"/>
+                </AssociationSet>
+                <EntitySet Name="statusPrzetarguSet" EntityType="86be556b371ec29c15306364.statusPrzetargu" sap:creatable="true" sap:updatable="true" sap:deletable="true"/>
+                <EntitySet Name="nablizszeZadaniaSet" EntityType="86be556b371ec29c15306364.nablizszeZadania" sap:creatable="true" sap:updatable="true" sap:deletable="true"/>
+                <EntitySet Name="testSet" EntityType="86be556b371ec29c15306364.test" sap:creatable="true" sap:updatable="true" sap:deletable="true"/>
+            </EntityContainer>
+            <EntityType Name="User">
+                <Key>
+                    <PropertyRef Name="ID"/>
+                </Key>
+                <Property Name="ID" Type="Edm.String" sap:creatable="true" sap:updatable="true" sap:deletable="true" sap:label="ID"/>
+                <Property Name="name" Type="Edm.String" sap:creatable="true" sap:updatable="true" sap:deletable="true" sap:label="name"/>
+                <Property Name="surname" Type="Edm.String" sap:creatable="true" sap:updatable="true" sap:deletable="true" sap:label="surname"/>
+                <NavigationProperty Name="Przetarg" Relationship="86be556b371ec29c15306364.UserPrzetargPrzetarg" FromRole="FromRole_UserPrzetargPrzetarg" ToRole="ToRole_UserPrzetargPrzetarg"/>
+                <NavigationProperty Name="Zadanie" Relationship="86be556b371ec29c15306364.UserZadanieZadania" FromRole="FromRole_UserZadanieZadania" ToRole="ToRole_UserZadanieZadania"/>
+                <NavigationProperty Name="test" Relationship="86be556b371ec29c15306364.Usertesttest" FromRole="FromRole_Usertesttest" ToRole="ToRole_Usertesttest"/>
+            </EntityType>
+            <Association Name="UserPrzetargPrzetarg">
+                <End Type="86be556b371ec29c15306364.User" Multiplicity="1" Role="FromRole_UserPrzetargPrzetarg"/>
+                <End Type="86be556b371ec29c15306364.Przetarg" Multiplicity="*" Role="ToRole_UserPrzetargPrzetarg"/>
+                <ReferentialConstraint>
+                    <Principal Role="FromRole_UserPrzetargPrzetarg">
+                        <PropertyRef Name="ID"/>
+                    </Principal>
+                    <Dependent Role="ToRole_UserPrzetargPrzetarg">
+                        <PropertyRef Name="___FK_74a69b26fce18d6f1530653c_00025"/>
+                    </Dependent>
+                </ReferentialConstraint>
+            </Association>
+            <Association Name="UserZadanieZadania">
+                <End Type="86be556b371ec29c15306364.User" Multiplicity="1" Role="FromRole_UserZadanieZadania"/>
+                <End Type="86be556b371ec29c15306364.Zadania" Multiplicity="*" Role="ToRole_UserZadanieZadania"/>
+                <ReferentialConstraint>
+                    <Principal Role="FromRole_UserZadanieZadania">
+                        <PropertyRef Name="ID"/>
+                    </Principal>
+                    <Dependent Role="ToRole_UserZadanieZadania">
+                        <PropertyRef Name="___FK_74a69b26fce18d6f1530653c_00027"/>
+                    </Dependent>
+                </ReferentialConstraint>
+            </Association>
+            <Association Name="Usertesttest">
+                <End Type="86be556b371ec29c15306364.User" Multiplicity="1" Role="FromRole_Usertesttest"/>
+                <End Type="86be556b371ec29c15306364.test" Multiplicity="*" Role="ToRole_Usertesttest"/>
+                <ReferentialConstraint>
+                    <Principal Role="FromRole_Usertesttest">
+                        <PropertyRef Name="ID"/>
+                    </Principal>
+                    <Dependent Role="ToRole_Usertesttest">
+                        <PropertyRef Name="___FK_e312ae73f1b9ac3b15307e88_00011"/>
+                    </Dependent>
+                </ReferentialConstraint>
+            </Association>
+            <EntityType Name="Przetarg">
+                <Key>
+                    <PropertyRef Name="ID"/>
+                </Key>
+                <Property Name="ID" Type="Edm.String" sap:creatable="true" sap:updatable="true" sap:deletable="true" sap:label="ID"/>
+                <Property Name="terminPytan" Type="Edm.DateTime" sap:creatable="true" sap:updatable="true" sap:deletable="true" sap:display-format="Date" sap:label="terminPytan"/>
+                <Property Name="terminSkladania" Type="Edm.DateTime" sap:creatable="true" sap:updatable="true" sap:deletable="true" sap:display-format="Date" sap:label="terminSkladania"/>
+                <Property Name="decyzja" Type="Edm.String" sap:creatable="true" sap:updatable="true" sap:deletable="true" sap:label="decyzja"/>
+                <Property Name="wadium" Type="Edm.String" sap:creatable="true" sap:updatable="true" sap:deletable="true" sap:label="wadium"/>
+                <Property Name="nazwa" Type="Edm.String" sap:creatable="true" sap:updatable="true" sap:deletable="true" sap:label="nazwa"/>
+                <Property Name="status" Type="Edm.String" sap:creatable="true" sap:updatable="true" sap:deletable="true" sap:label="status"/>
+                <Property Name="idObecne" Type="Edm.String" sap:creatable="true" sap:updatable="true" sap:deletable="true" sap:label="idObecne"/>
+                <Property Name="idLast" Type="Edm.String" sap:creatable="true" sap:updatable="true" sap:deletable="true" sap:label="idLast"/>
+                <Property Name="katPostepowania" Type="Edm.String" sap:creatable="true" sap:updatable="true" sap:deletable="true" sap:label="katPostepowania"/>
+                <Property Name="klient" Type="Edm.String" sap:creatable="true" sap:updatable="true" sap:deletable="true" sap:label="klient"/>
+                <Property Name="email" Type="Edm.String" sap:creatable="true" sap:updatable="true" sap:deletable="true" sap:label="email"/>
+                <Property Name="___FK_74a69b26fce18d6f1530653c_00025" Type="Edm.String" sap:creatable="true" sap:updatable="true" sap:deletable="true" sap:label="___FK_74a69b26fce18d6f1530653c_00025"/>
+                <Property Name="procent" Type="Edm.Decimal" sap:creatable="true" sap:updatable="true" sap:deletable="true" sap:label="procent"/>
+                <Property Name="statusV" Type="Edm.String" sap:creatable="true" sap:updatable="true" sap:deletable="true" sap:label="statusV"/>
+                <Property Name="progressProcent" Type="Edm.String" sap:creatable="true" sap:updatable="true" sap:deletable="true" sap:label="progressProcent"/>
+                <Property Name="visibility" Type="Edm.Boolean" sap:creatable="true" sap:updatable="true" sap:deletable="true" sap:label="visibility"/>
+                <Property Name="visibility2" Type="Edm.Boolean" sap:creatable="true" sap:updatable="true" sap:deletable="true" sap:label="visibility2"/>
+            </EntityType>
+            <EntityType Name="Zadania">
+                <Key>
+                    <PropertyRef Name="ID"/>
+                </Key>
+                <Property Name="ID" Type="Edm.String" sap:creatable="true" sap:updatable="true" sap:deletable="true" sap:label="ID"/>
+                <Property Name="___FK_74a69b26fce18d6f1530653c_00027" Type="Edm.String" sap:creatable="true" sap:updatable="true" sap:deletable="true" sap:label="___FK_74a69b26fce18d6f1530653c_00027"/>
+                <Property Name="wykonawca" Type="Edm.String" sap:creatable="true" sap:updatable="true" sap:deletable="true" sap:label="wykonawca"/>
+                <Property Name="opis" Type="Edm.String" sap:creatable="true" sap:updatable="true" sap:deletable="true" sap:label="opis"/>
+                <Property Name="___FK_5566f918826505d415307be7_00005" Type="Edm.String" sap:creatable="true" sap:updatable="true" sap:deletable="true" sap:label="___FK_5566f918826505d415307be7_00005"/>
+                <Property Name="czas" Type="Edm.DateTime" sap:creatable="true" sap:updatable="true" sap:deletable="true" sap:display-format="Date" sap:label="czas"/>
+                <Property Name="koniec" Type="Edm.DateTime" sap:creatable="true" sap:updatable="true" sap:deletable="true" sap:display-format="Date" sap:label="koniec"/>
+                <NavigationProperty Name="User" Relationship="86be556b371ec29c15306364.ZadaniaUserUser" FromRole="FromRole_ZadaniaUserUser" ToRole="ToRole_ZadaniaUserUser"/>
+            </EntityType>
+            <Association Name="ZadaniaUserUser">
+                <End Type="86be556b371ec29c15306364.Zadania" Multiplicity="1" Role="FromRole_ZadaniaUserUser"/>
+                <End Type="86be556b371ec29c15306364.User" Multiplicity="1" Role="ToRole_ZadaniaUserUser"/>
+                <ReferentialConstraint>
+                    <Principal Role="ToRole_ZadaniaUserUser">
+                        <PropertyRef Name="ID"/>
+                    </Principal>
+                    <Dependent Role="FromRole_ZadaniaUserUser">
+                        <PropertyRef Name="___FK_5566f918826505d415307be7_00005"/>
+                    </Dependent>
+                </ReferentialConstraint>
+            </Association>
+            <EntityType Name="statusPrzetargu">
+                <Key>
+                    <PropertyRef Name="ID"/>
+                </Key>
+                <Property Name="ID" Type="Edm.String" sap:creatable="true" sap:updatable="true" sap:deletable="true" sap:label="ID"/>
+            </EntityType>
+            <EntityType Name="nablizszeZadania">
+                <Key>
+                    <PropertyRef Name="ID"/>
+                </Key>
+                <Property Name="ID" Type="Edm.String" sap:creatable="true" sap:updatable="true" sap:deletable="true" sap:label="ID"/>
+                <Property Name="wykonawca" Type="Edm.String" sap:creatable="true" sap:updatable="true" sap:deletable="true" sap:label="wykonawca"/>
+                <Property Name="data" Type="Edm.DateTime" sap:creatable="true" sap:updatable="true" sap:deletable="true" sap:display-format="Date" sap:label="data"/>
+                <Property Name="opis" Type="Edm.String" sap:creatable="true" sap:updatable="true" sap:deletable="true" sap:label="opis"/>
+            </EntityType>
+            <EntityType Name="test">
+                <Key>
+                    <PropertyRef Name="ID"/>
+                </Key>
+                <Property Name="ID" Type="Edm.String" sap:creatable="true" sap:updatable="true" sap:deletable="true" sap:label="ID"/>
+                <Property Name="___FK_e312ae73f1b9ac3b15307e88_00011" Type="Edm.String" sap:creatable="true" sap:updatable="true" sap:deletable="true" sap:label="___FK_e312ae73f1b9ac3b15307e88_00011"/>
+            </EntityType>
+        </Schema>
+    </edmx:DataServices>
+</edmx:Edmx>

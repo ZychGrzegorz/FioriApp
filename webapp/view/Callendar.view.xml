@@ -1,0 +1,89 @@
+<mvc:View xmlns:mvc="sap.ui.core.mvc" controllerName="com.sap.build.standard.untitledPrototype.controller.Callendar" xmlns="sap.m" xmlns:layout="sap.ui.layout" xmlns:unified="sap.ui.unified" xmlns:commons="sap.suite.ui.commons">
+    <Page showHeader="true" title="Kalendarz" showFooter="true" showNavButton="true" navButtonPress="_onPageNavButtonPress">
+        <content>
+            <layout:BlockLayout background="Default" visible="true">
+                <layout:content>
+                    <layout:BlockLayoutRow scrollable="true">
+                        <layout:content>
+                            <layout:BlockLayoutCell width="75" title="" titleAlignment="Begin" titleLevel="Auto">
+                                <layout:content>
+                                    <Text text="" width="auto" maxLines="20" wrapping="true" textAlign="Begin" textDirection="Inherit" visible="true"/>
+                                    <PlanningCalendar id="sap_Responsive_Page_0-content-sap_ui_layout_BlockLayout-1617801461449-content-sap_ui_layout_BlockLayoutRow-2-content-sap_ui_layout_BlockLayoutCell-1-content-sap_m_PlanningCalendar-1617801563366" width="auto" startDate="{staticDataModel>/sap_Responsive_Page_0-content-sap_ui_layout_BlockLayout-1617801461449-content-sap_ui_layout_BlockLayoutRow-2-content-sap_ui_layout_BlockLayoutCell-1-content-sap_m_PlanningCalendar-1617801563366/startDate}" noDataText="No data" singleSelection="true" appointmentsVisualization="Filled" appointmentsReducedHeight="true" showRowHeaders="true" showWeekNumbers="true" showDayNamesLine="true" visible="true" showIntervalHeaders="false" rows="{path:'/UserSet', templateShareable:true, parameters:{expand:'Zadanie'}}">
+                                        <toolbarContent>
+                                            <Title text="Mój kalendarz" titleStyle="Auto" width="auto" textAlign="Begin" visible="true" wrapping="false" class="sapUiSmallMargin"/>
+                                            <Button text="" type="Default" icon="sap-icon://add" iconFirst="true" width="auto" enabled="true" visible="true" iconDensityAware="false" class="sapUiSmallMargin"/>
+                                            <Button text="" type="Default" icon="sap-icon://arrow-left" iconFirst="true" width="auto" enabled="true" visible="true" iconDensityAware="false" press="_onButtonPress"/>
+                                        </toolbarContent>
+                                        <rows>
+                                            <PlanningCalendarRow title="{name}" text="{surname}" icon="/build/uilibraries/content/static/person-picture.jpg" selected="false" appointments="{path:'Zadanie', templateShareable:true}">
+                                                <appointments>
+                                                    <unified:CalendarAppointment id="sap_Responsive_Page_0-content-sap_ui_layout_BlockLayout-1617801461449-content-sap_ui_layout_BlockLayoutRow-2-content-sap_ui_layout_BlockLayoutCell-1-content-sap_m_PlanningCalendar-1617801563366-rows-sap_m_PlanningCalendarRow-1-appointments-sap_ui_unified_CalendarAppointment-1" title="{ID}" text="{wykonawca}" icon="sap-icon://family-care" startDate="{path:'czas', formatter:'.formatDateTimeUTCtoLocaleForStartDate'}" endDate="{path:'koniec', formatter:'.formatDateTimeUTCtoLocale'}" type="Type19" selected="false" tentative="false"/>
+                                                </appointments>
+                                            </PlanningCalendarRow>
+                                        </rows>
+                                    </PlanningCalendar>
+                                    <List mode="SingleSelectMaster" width="100%" headerText="Header" footerText="" backgroundDesign="Solid" showSeparators="All" growing="true" growingThreshold="20" growingScrollToLoad="true" visible="true" items="{path:'/ZadaniaSet', templateShareable:true, parameters:{expand:'User'}}">
+                                        <infoToolbar>
+                                            <Toolbar width="100%" height="auto" design="Auto" visible="false" enabled="true">
+                                                <content>
+                                                    <Label text="Label" design="Standard" width="100%" required="false" textAlign="Begin" textDirection="Inherit" visible="true"/>
+                                                    <Label text="teeeeeeeeeeeee" design="Standard" width="100%" required="false" textAlign="Begin" textDirection="Inherit" visible="true"/>
+                                                </content>
+                                            </Toolbar>
+                                        </infoToolbar>
+                                        <headerToolbar>
+                                            <Toolbar enabled="true" visible="false" width="" design="Solid">
+                                                <content>
+                                                    <SearchField placeholder="Search" showSearchButton="true" visible="true" width="100%"/>
+                                                </content>
+                                            </Toolbar>
+                                        </headerToolbar>
+                                        <items>
+                                            <ObjectListItem intro="{User/surname}" title="{User/name}" number="{path: 'czas', type: 'sap.ui.model.type.DateTime', formatOptions: { UTC: true, style: 'short' }}" numberUnit="{path: 'koniec', type: 'sap.ui.model.type.DateTime', formatOptions: { UTC: true, style: 'short' }}" numberState="None" type="Active" selected="true" showMarkers="false">
+                                                <attributes>
+                                                    <ObjectAttribute text="" active="false" visible="true"/>
+                                                    <ObjectAttribute title="zadanie" text="{opis}" active="false" visible="true"/>
+                                                </attributes>
+                                                <firstStatus/>
+                                                <secondStatus/>
+                                            </ObjectListItem>
+                                        </items>
+                                    </List>
+                                    <ProgressIndicator width="100%" percentValue="75" showValue="true" displayValue="75 %" state="None" enabled="true" visible="true"/>
+                                </layout:content>
+                            </layout:BlockLayoutCell>
+                            <layout:BlockLayoutCell width="25" title="Nadchodzące wydarzenia" titleAlignment="Begin" titleLevel="Auto">
+                                <layout:content>
+                                    <commons:Timeline alignment="Left" enableDoubleSided="true" width="100%" height="auto" axisOrientation="Vertical" enableBusyIndicator="true" enableScroll="false" forceGrowing="false" groupBy="" growingThreshold="5" showHeaderBar="true" showIcons="true" showSearch="true" sort="true" sortOldestFirst="false" content="{path:'/ZadaniaSet', templateShareable:true}">
+                                        <commons:content>
+                                            <commons:TimelineItem dateTime="{ID}" text="{wykonawca}" userName="{opis}" userPicture="/build/uilibraries/content/static/image-canvas.svg" title="{path: 'czas', type: 'sap.ui.model.type.DateTime', formatOptions: { UTC: true, style: 'short' }}" icon="sap-icon://notes" filterValue="{path: 'koniec', type: 'sap.ui.model.type.DateTime', formatOptions: { UTC: true, style: 'short' }}" userNameClickable="true" replyCount="0" maxCharacters="0">
+                                                <commons:embeddedControl/>
+                                            </commons:TimelineItem>
+                                        </commons:content>
+                                        <commons:filterList/>
+                                    </commons:Timeline>
+                                </layout:content>
+                            </layout:BlockLayoutCell>
+                        </layout:content>
+                    </layout:BlockLayoutRow>
+                </layout:content>
+            </layout:BlockLayout>
+        </content>
+        <footer>
+            <OverflowToolbar width="100%" height="46px" design="Auto" enabled="true" visible="true">
+                <content>
+                    <ToolbarSpacer width=""/>
+                    <Button text="Save" type="Emphasized" iconFirst="true" width="auto" enabled="true" visible="true" iconDensityAware="false" press="_onButtonPress1"/>
+                    <Button text="Cancel" type="Default" iconFirst="true" width="auto" enabled="true" visible="true" iconDensityAware="false" press="_onButtonPress2"/>
+                </content>
+            </OverflowToolbar>
+        </footer>
+        <headerContent>
+            <Button text="" type="Default" icon="{= ${FclRouter>/expandIcon/img}}" iconFirst="true" width="auto" enabled="true" visible="{= ${fclButton>/visible}}" tooltip="{= ${FclRouter>/expandIcon/tooltip}}" iconDensityAware="false" class="fcl-resizeButton-js" press="_onExpandButtonPress"/>
+            <Button text="" type="Default" icon="sap-icon://decline" iconFirst="true" width="auto" enabled="true" visible="{= ${fclButton>/visible}}" tooltip="Close Column" iconDensityAware="false" class="fcl-closeButton-js" press="_onCloseButtonPress"/>
+            <OverflowToolbarButton text="Action" type="Default" icon="sap-icon://arrow-left" iconFirst="true" width="auto" enabled="true" visible="true" iconDensityAware="false" press="_onOverflowToolbarButtonPress"/>
+        </headerContent>
+        <subHeader/>
+        <customHeader/>
+    </Page>
+</mvc:View>

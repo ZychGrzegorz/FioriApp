@@ -1,0 +1,179 @@
+{
+	"_version": "1.8.0",
+	"sap.app": {
+		"_version": "1.3.0",
+		"id": "com.sap.build.standard.untitledPrototype",
+		"type": "application",
+		"i18n": "i18n/i18n.properties",
+		"title": "{{appTitle}}",
+		"description": "{{appDescription}}",
+		"applicationVersion": {
+			"version": "1.2.2"
+		},
+		"ach": "ach",
+		"resources": "resources.json",
+		"dataSources": {
+			"local": {
+				"uri": "/here/goes/your/serviceUrl/local/",
+				"type": "OData",
+				"settings": {
+					"odataVersion": "2.0",
+					"localUri": "localService/metadata.xml"
+				}
+			}
+		}
+	},
+	"sap.fiori": {
+		"_version": "1.1.0",
+		"registrationIds": [],
+		"archeType": "transactional"
+	},
+	"sap.ui": {
+		"_version": "1.3.0",
+		"technology": "UI5",
+		"icons": {
+			"icon": "sap-icon://detail-view",
+			"favIcon": "",
+			"phone": "",
+			"phone@2": "",
+			"tablet": "",
+			"tablet@2": ""
+		},
+		"deviceTypes": {
+			"desktop": true,
+			"tablet": true,
+			"phone": true
+		}
+	},
+	"sap.ui5": {
+		"_version": "1.3.0",
+		"rootView": {
+			"viewName": "com.sap.build.standard.untitledPrototype.view.App",
+			"type": "XML",
+			"async": false,
+			"id": "app"
+		},
+		"autoPrefixId": true,
+		"dependencies": {
+			"minUI5Version": "1.50.0",
+			"libs": {
+				"sap.ui.core": {},
+				"sap.m": {},
+				"sap.f": {}
+			}
+		},
+		"contentDensities": {
+			"compact": true,
+			"cozy": true
+		},
+		"models": {
+			"i18n": {
+				"type": "sap.ui.model.resource.ResourceModel",
+				"uri": "i18n/i18n.properties"
+			},
+			"": {
+				"dataSource": "local",
+				"type": "sap.ui.model.odata.v2.ODataModel",
+				"preload": true,
+				"settings": {
+					"loadMetadataAsync": false,
+					"json": true,
+					"bJSON": true,
+					"defaultBindingMode": "TwoWay",
+					"useBatch": true,
+					"refreshAfterChange": false,
+					"disableHeadRequestForToken": true
+				}
+			}
+		},
+		"routing": {
+			"config": {
+				"routerClass": "sap.f.routing.Router",
+				"viewType": "XML",
+				"viewPath": "com.sap.build.standard.untitledPrototype.view",
+				"controlId": "idAppControl",
+				"clearTarget": false,
+				"controlAggregation": "beginColumnPages",
+				"async": false,
+				"bypassed": {
+					"target": [
+						"MainPage"
+					]
+				}
+			},
+			"targets": {
+				"MainPage": {
+					"controlAggregation": "beginColumnPages",
+					"viewName": "MainPage",
+					"viewId": "MainPage",
+					"viewLevel": 1,
+					"transition": "slide"
+				},
+				"Page2": {
+					"controlAggregation": "beginColumnPages",
+					"viewName": "Page2",
+					"viewId": "Page2",
+					"viewLevel": 3,
+					"transition": "slide"
+				},
+				"Callendar": {
+					"controlAggregation": "beginColumnPages",
+					"viewName": "Callendar",
+					"viewId": "Callendar",
+					"viewLevel": 2,
+					"transition": "slide"
+				},
+				"Page6": {
+					"controlAggregation": "midColumnPages",
+					"viewName": "Page6",
+					"viewId": "Page6",
+					"viewLevel": 4,
+					"transition": "slide"
+				}
+			},
+			"routes": [
+				{
+					"pattern": "MainPage/:layout:",
+					"name": "MainPage",
+					"target": [
+						"MainPage"
+					],
+					"layout": "OneColumn"
+				},
+				{
+					"pattern": "Page2/:beginContext:/:layout:",
+					"name": "Page2",
+					"target": [
+						"Page2"
+					],
+					"layout": "OneColumn"
+				},
+				{
+					"pattern": "Callendar/:layout:",
+					"name": "Callendar",
+					"target": [
+						"Callendar"
+					],
+					"layout": "OneColumn"
+				},
+				{
+					"pattern": "Page2/Page6/:midContext:/:layout:",
+					"name": "Page6",
+					"target": [
+						"Page2",
+						"Page6"
+					],
+					"layout": "TwoColumnsMidExpanded"
+				},
+				{
+					"pattern": "",
+					"name": "default",
+					"target": [
+						"MainPage"
+					],
+					"layout": "OneColumn"
+				}
+			]
+		}
+	}
+}
